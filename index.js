@@ -13,6 +13,14 @@ app.get('/', (req, res) => {
   res.sendFile('/index.html', { root: path.dirname(__dirname + "/code") })
 })
 
+io.on('connection', socket => {
+  console.log(`a user connected @ ${(new Date())}`)
+
+  socket.on('disconnect', () => {
+    console.log('a user disconnected')
+  })
+})
+
 http.listen(3000, () => {
   console.log('listening on port 3000')
 })

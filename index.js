@@ -16,6 +16,12 @@ app.get('/', (req, res) => {
 io.on('connection', socket => {
   console.log(`a user connected @ ${(new Date())}`)
 
+  socket.broadcast.emit('broadcast', 'Someone has joined the room')
+
+  socket.on('chat message', msg => {
+    io.emit('chat message', msg)
+  })
+
   socket.on('disconnect', () => {
     console.log('a user disconnected')
   })

@@ -26,7 +26,8 @@
     </form>
     <script src="/socket.io/socket.io.js"></script>
     <script>
-      const socket = io()
+      let nickname = prompt('Please select a name')
+      const socket = io({ query: { nickname } })
 
       const messages = document.getElementById('messages')
       const form = document.getElementById('form')

@@ -19,8 +19,8 @@ io.on('connection', socket => {
 
   socket.broadcast.emit('join', `${nickname} has joined the room`)
 
-  socket.on('chat message', msg => {
-    io.emit('chat message', msg)
+  socket.on('chat message', ({ msg, nickname }) => {
+    io.emit('chat message', { msg, nickname })
   })
 
   socket.on('disconnect', () => {

@@ -17,14 +17,14 @@ io.on('connection', socket => {
   const nickname = socket.handshake.query.nickname
   console.log(`${nickname} connected @ ${(new Date())}`)
 
-  socket.broadcast.emit('broadcast', 'Someone has joined the room')
+  socket.broadcast.emit('join', `${nickname} has joined the room`)
 
   socket.on('chat message', msg => {
     io.emit('chat message', msg)
   })
 
   socket.on('disconnect', () => {
-    console.log('a user disconnected')
+    console.log(`${nickname} left the room`)
   })
 })
 

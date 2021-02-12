@@ -50,9 +50,10 @@
         messages.appendChild(userJoined)
       })
 
-      socket.on('chat message', msg => {
+      socket.on('chat message', ({ msg, nickname }) => {
+        console.log(msg, nickname)
         const item = document.createElement('li')
-        item.textContent = msg
+        item.textContent = `${nickname} : ${msg}`
         messages.appendChild(item)
         window.scrollTo(0, document.body.scrollHeight)
       })

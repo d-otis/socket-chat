@@ -41,7 +41,7 @@
         }
       })
 
-      socket.on('broadcast', msg => {
+      socket.on('join', msg => {
         const userJoined = document.createElement('li')
         userJoined.textContent = msg
         userJoined.style.fontStyle = 'italic'

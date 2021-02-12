@@ -14,7 +14,8 @@ app.get('/', (req, res) => {
 })
 
 io.on('connection', socket => {
-  console.log(`a user connected @ ${(new Date())}`)
+  const nickname = socket.handshake.query.nickname
+  console.log(`${nickname} connected @ ${(new Date())}`)
 
   socket.broadcast.emit('broadcast', 'Someone has joined the room')
 
